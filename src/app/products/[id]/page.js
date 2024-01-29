@@ -46,7 +46,6 @@ export default function Searchh(props) {
 
   async function getdata() {
     const resp = await axios.get(`http://localhost:5000/search?name=${value}`)
-    console.log(resp)
     setdata(resp.data)
   }
 

@@ -12,6 +12,7 @@ import { selectItems } from '@/features/cart/cartSlice'
 import { fetchItemsByUserIdAsync } from '@/features/cart/cartSlice'
 import { signOutAsync } from '@/features/auth/authSlice'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function Nav() {
   const user = JSON.parse(localStorage.getItem("loginuser"))
@@ -19,6 +20,7 @@ export default function Nav() {
   const cart = useSelector(selectItems)
   const dispatch = useDispatch()
   const [status, setstatus] = useState(false)
+  const notify = ()=> toast.info("Signout" ,{autoClose:3000})
   async function search(e) {
     e.preventDefault()
     const val = e.target.search.value
@@ -26,6 +28,7 @@ export default function Nav() {
   }
   function SignOut() {
     dispatch(signOutAsync())
+    notify()
   }
   useEffect(() => {
     dispatch(fetchItemsByUserIdAsync(user.id))
