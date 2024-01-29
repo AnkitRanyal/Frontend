@@ -46,6 +46,7 @@ export default function Searchh(props) {
 
   async function getdata() {
     const resp = await axios.get(`http://localhost:5000/search?name=${value}`)
+    console.log(resp)
     setdata(resp.data)
   }
 
@@ -57,7 +58,6 @@ export default function Searchh(props) {
   useEffect(() => {
     getdata()
   }, [])
-
   return (<>
     <Nav></Nav>
     {userlogin || loginstatus ? <div>
@@ -68,9 +68,9 @@ export default function Searchh(props) {
           <button type='submit' className='search'><img height="30px" width="30px" className="searchiconn" src={Searchicon.src}></img></button>
         </form>
       </div>
-      {data ? <div className="searchproducts">
+      {data && data.length ? <div className="searchproducts">
         {
-          data.map((item, i) => (
+         data.length && data.map((item, i) => (
             <div key={i} className="searchcard">
               <Link href={`/products/productdeatils/${item.id}`}><Image src={item.thumbnail} height={260} width={260} className="searchimg"></Image></Link>
               {item && item.stock > 0 ? <><h4 className='producttitle'>{item.title}</h4><br></br>
@@ -80,9 +80,11 @@ export default function Searchh(props) {
             </div>
           ))
         }
-      </div> : redirect("/login")}
+      </div> :<div>
+        <h1  className="notavalible"> This Product is Not Avalible </h1>
+      </div> }
       <div className="screenproductidfooter"><Footer></Footer></div>
     </div>
-      : null}
+      : redirect("/login")}
   </>)
 }

@@ -3,8 +3,7 @@
 -To Install Next js run command npx create-next-app appname( Name of the app you want ) in vscode editor terminal.
 - Clone code from git
 - Run command npm install in vscode editor terminal.
-- Run the development server:
-npm run dev
+- Run the development server : npm run dev
 - Type url - localhost:3000   in addressbar
 
 

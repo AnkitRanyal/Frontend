@@ -3,7 +3,19 @@
     box-sizing: border-box;
     position: relative;
 }
-
+.notavalible{
+    color: red;
+    position: relative;
+    height: 200px;
+    margin: 100px 320px;
+    font-size: 40px;
+    font-weight: 600;
+   
+}
+.screenproductidfooter{
+    position: relative;
+    top: 100px;
+}
 .checked1,.checked2,.checked3,.checked4,.checked5,.checked {
     color: orange;
     margin: 3px;
@@ -2063,6 +2075,17 @@ label {
        
   
       
+    }
+}
+@media screen and (max-width :800px) {
+    .notavalible{
+        color: red;
+        position: relative;
+        height: 200px;
+        margin: 200px 20px 20px 40px;
+        font-size: 50px;
+        font-weight: 600;
+       
     }
 }
 
