@@ -5,7 +5,7 @@ import '../../../public/style/style.css'
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { fetchItemsByUserIdAsync } from "@/features/cart/cartSlice"
+import { fetchItemsByUserIdAsync,resetCartAsync } from "@/features/cart/cartSlice"
 import {
     deleteItemFromCartAsync,
     selectItems,
@@ -23,7 +23,6 @@ export default function Cart() {
     const dispatch = useDispatch()
     const cartitems = useSelector(selectItems)
     const userID = JSON.parse(localStorage.getItem("loginuser"))
-
 
     const handleQuantity = (e, item) => {
         setquantity(+e.target.value)

@@ -53,8 +53,8 @@ export default function ordersummary() {
       ))
         : null}
 
+      
       {currentOrder && currentOrder !== null && currentOrder.length && currentOrder.length == 1 ? currentOrder[0].paymentMethod === "card" && currentOrder.reduce((total, i) => i.totalAmount + total, 0) ? <Link href={`http://localhost:5000/payment/?amount=${currentOrder.reduce((total, i) => i.totalAmount + total, 0)}`} className="btn btn-success buybtn" >Pay  &#8377;{currentOrder.reduce((total, i) => i.totalAmount + total, 0)}</Link> : <Link href={"/orderplaced"} className="btn btn-success buybtn" >Pay &#8377;{currentOrder !== null && currentOrder.reduce((total, i) => i.totalAmount + total, 0)}</Link> : currentOrder && currentOrder.length > 1 ? currentOrder !== null && currentOrder[0].paymentMethod === "card" && currentOrder.reduce((total, i) => i.totalAmount) ? <Link href={`http://localhost:5000/payment/?amount=${currentOrder.reduce((total, i) => i.totalAmount)}`} className="btn btn-success buybtn" >Pay  &#8377;{currentOrder.reduce((total, i) => i.totalAmount)}</Link> : <Link href={"/orderplaced"} className="btn btn-success buybtn" >Pay &#8377;{currentOrder !== null && currentOrder.reduce((total, i) => i.totalAmount)}</Link> : null}
-
       {currentOrder !== null ? <div className="screenfo"><Footer></Footer></div> : <div className="summaryfooter"><Footer></Footer></div>}
     </div> : redirect("/login")}
   </>)

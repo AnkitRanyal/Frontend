@@ -7,7 +7,7 @@ import Search from '../../public/search.png'
 import Searchicon from '../../public/searchicon.png'
 import './globals.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { selectItems } from '@/features/cart/cartSlice'
 import { fetchItemsByUserIdAsync } from '@/features/cart/cartSlice'
 import { signOutAsync } from '@/features/auth/authSlice'
@@ -30,6 +30,8 @@ export default function Nav() {
     dispatch(signOutAsync())
     notify()
   }
+  useEffect(()=>{
+  },[SignOut])
   useEffect(() => {
     if(user && user.id){
       dispatch(fetchItemsByUserIdAsync(user.id))
