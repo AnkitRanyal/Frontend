@@ -51,7 +51,7 @@ export default function Myprofile() {
     useEffect(() => {
         dispatch(fetchLoggedInUserAsync(userId))
     }, [])
-s
+
     return (<>
         <Nav></Nav>
         {userlogin || loginstatus ? <div className="profilepage">
