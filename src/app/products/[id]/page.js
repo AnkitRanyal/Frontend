@@ -81,7 +81,7 @@ export default function Searchh(props) {
           ))
         }
       </div> :<div>
-        <h1  className="notavalible"> This Product is Not Avalible </h1>
+        <h1  className="notavaliblee"> This Product is Not Avalible </h1>
       </div> }
       <div className="screenproductidfooter"><Footer></Footer></div>
     </div>

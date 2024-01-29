@@ -3,7 +3,7 @@
     box-sizing: border-box;
     position: relative;
 }
-.notavalible{
+.notavaliblee{
     color: red;
     position: relative;
     height: 200px;
@@ -2078,7 +2078,7 @@ label {
     }
 }
 @media screen and (max-width :800px) {
-    .notavalible{
+    .notavaliblee{
         color: red;
         position: relative;
         height: 200px;
