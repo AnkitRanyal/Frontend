@@ -1,0 +1,127 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.navbar{
+    width: 80%;
+    height: 70px;
+    background-color: black;
+    color: white;
+    position: relative;
+  
+    left: 150px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.navbar ul li{
+position: relative;
+left:900px;
+color: white;
+}
+.navbar ul li:hover{
+    color: #ff7200;
+}
+
+.page{
+    background-image: url('../shopping1.png');
+    width: 100%;
+    height: 100vh;
+}
+
+.choose{
+    display: flex;
+    width: 80%;
+    position: relative;
+    top: -440px;
+    left: 200px;
+
+}
+
+.choosecategories h4{
+cursor: pointer;
+ font-size: 16px;
+ font-weight: 600;
+ padding: 10px;
+ background-color: rgb(63, 59, 59);
+ color: white;
+ border-radius: 10px;
+}
+.choosecategories h4:hover{
+    color: #ff7200;
+   
+}
+
+.choosebrandss h5{
+    cursor: pointer;
+position: relative;
+left: 477px;
+ font-size: 16px;
+ font-weight: 600;
+ padding: 10px;
+ background-color: rgb(63, 59, 59);
+ color: white;
+ border-radius: 10px;
+}
+.choosebrandss h5:hover{
+    color: #ff7200;
+
+}
+
+.features{
+    position: relative;
+    display: flex;
+    left: 100px;
+}
+
+.features ul li{
+   margin: 0px 10px;
+   font-size: 20px;
+   color: white;
+   font-weight: 600;
+   background-color: rgb(63,59,59);
+   height: 40px;
+   border-radius: 10px;
+   padding: 5px;
+}
+.features ul li:hover{
+    color: #ff7200;
+}
+.searching{
+    position: relative;
+    top: -30px;
+    left: 150px;
+}
+.searchicon{
+    position: relative;
+    left: 165px;
+    border-radius: 5px;
+    padding: -15px;
+    width: 30px;
+    top: 0px;
+    background-color: #ff7200;
+}
+.searchinput{
+    position: relative;
+    top: 33px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 400px;
+    left: -250px;
+    height: 35px;
+}
+
+
+.slide {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.slider {
+    margin-top: 20px;
+
+
+}

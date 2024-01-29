@@ -1,0 +1,71 @@
+export function addToCart(id, quantity, userid) {
+  const cartdata = { quantity, id }
+  return new Promise(async (resolve) => {
+    const response = await fetch('http://localhost:5000/cart/' + userid, {
+      method: 'POST',
+      body: JSON.stringify(cartdata),
+      headers: { 'content-type': 'application/json' },
+    });
+    const data = await response.json();
+    resolve({ data });
+  });
+}
+
+export function fetchItemsByUserId(userId) {
+  return new Promise(async (resolve) => {
+    const response = await fetch('http://localhost:5000/cart?user=' + userId);
+    const data = await response.json();
+    resolve({ data });
+  })
+};
+
+export function fetchAllOrderByUserId(userId) {
+  return new Promise(async (resolve) => {
+    const response = await fetch('http://localhost:5000/checkout/' + userId);
+    const data = await response.json();
+    resolve({ data });
+  })
+};
+
+export function fetchItemsById(userId, id) {
+  return new Promise(async (resolve) => {
+    const response = await fetch(`http://localhost:5000/checkout?user=${userId}&product=${id}`);
+    const data = await response.json();
+    resolve({ data });
+  });
+}
+
+export function updateCart(update) {
+  return new Promise(async (resolve) => {
+    const response = await fetch('http://localhost:5000/cart/' + update.id, {
+      method: 'PATCH',
+      body: JSON.stringify(update),
+      headers: { 'content-type': 'application/json' },
+    });
+    const data = await response.json();
+    resolve({ data });
+  });
+}
+
+export function deleteItemFromCart(itemId) {
+  return new Promise(async (resolve) => {
+    const response = await fetch('http://localhost:5000/cart/' + itemId, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+    });
+    const data = await response.json();
+    resolve({ data: { id: itemId } });
+  });
+}
+
+export function resetCart() {
+  // get all items of user's cart - and then delete each
+  return new Promise(async (resolve) => {
+    const response = await fetchItemsByUserId();
+    const items = response.data;
+    for (let item of items) {
+      await deleteItemFromCart(item.id);
+    }
+    resolve({ status: 'success' });
+  });
+}
