@@ -3,6 +3,16 @@
     box-sizing: border-box;
     position: relative;
 }
+.subtotal{
+position: relative;
+top: -50px;
+background-color: aqua;
+width: 500px;
+line-height: 50px;
+padding: 0px 180px;
+left: 430px;
+border-radius: 10px;
+}
 .notavaliblee{
     color: red;
     position: relative;
@@ -2076,6 +2086,20 @@ label {
   
       
     }
+}
+
+
+@media screen and (max-width :800px) {
+    .subtotal{
+        position: relative;
+        top: 5px;
+        background-color: aqua;
+        width: 320px;
+        line-height: 50px;
+        padding: 0px 80px;
+        left: 10px;
+        border-radius: 10px;
+        }
 }
 @media screen and (max-width :800px) {
     .notavaliblee{
