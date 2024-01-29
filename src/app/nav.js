@@ -31,8 +31,10 @@ export default function Nav() {
     notify()
   }
   useEffect(() => {
-    if(user.id){
+    if(user && user.id){
       dispatch(fetchItemsByUserIdAsync(user.id))
+    }else{
+      dispatch(fetchItemsByUserIdAsync())
     }
   }, [])
   return (<>
