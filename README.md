@@ -5,6 +5,7 @@
 - Run command npm install in vscode editor terminal.
 - Run the development server:
 npm run dev
+- Type url - localhost:3000   in addressbar
 
 
 🔥 Features :
