@@ -4,6 +4,7 @@ import { addToCart, deleteItemFromCart, fetchItemsByUserId, resetCart, updateCar
 const initialState = {
   status: 'idle',
   items: [],
+  checkItems:[],
   cartLoaded: false
 };
 
@@ -93,7 +94,7 @@ export const cartSlice = createSlice({
       })
       .addCase(fetchItemsByIdAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.items = action.payload;
+        state.checkItems = action.payload;
         state.cartLoaded = true;
       })
       .addCase(fetchAllOrderByUserIdAsync.pending, (state) => {
@@ -143,6 +144,7 @@ export const cartSlice = createSlice({
 });
 
 export const selectItems = (state) => state.cart.items;
+export const selectcheckItems = (state) => state.cart.checkItems;
 export const selectCartStatus = (state) => state.cart.status;
 export const selectCartLoaded = (state) => state.cart.cartLoaded;
 
