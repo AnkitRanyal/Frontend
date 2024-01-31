@@ -25,8 +25,13 @@ setTimeout(()=>{
      }else{
          router.push("/login")
      }
-},1000)
+},3000)
     return(<>
-    
+     <center>
+        <div style={{backgroundColor:"beige",width:"100%",height:"100vh"}}>
+            <div className="loader"></div>
+    <h1 className="auth">Checking Authentication</h1>
+        </div>
+    </center>
     </>)
 }

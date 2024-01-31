@@ -45,12 +45,12 @@ export default function Login() {
       if (response) {
         const data = await response.json();
         if (data.login == true && data.role == 'user') {
-          notify()
+          setTimeout(notify,3000)
           localStorage.setItem("jwt", JSON.stringify(data.token))
           router.push("/auth")
         } else if (data.login == true && data.role == 'admin') {
           router.push("/admin")
-          notify()
+          setTimeout(notify,3000)
         }
         else {
           router.push("/login")
