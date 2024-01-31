@@ -2,14 +2,15 @@
 import { useSelector } from "react-redux"
 import { selectUserLogin } from "@/features/auth/authSlice"
 import Nav from "../nav"
+import { selectCurrentOrder } from "@/features/order/orderSlice"
 import Link from "next/link"
 import { redirect, useRouter } from "next/navigation"
 import Footer from "../../../fotter"
 import { useEffect, useState } from "react"
 export default function ordersummary() {
-  let currentOrder = JSON.parse(localStorage.getItem("order"))
+  const order = useSelector(selectCurrentOrder)
+  const currentOrder = order.length ? order :!order.length ? JSON.parse(localStorage.getItem("order")):null
   const router = useRouter()
-  let [order,setorder] = useState(currentOrder)
   const loginstatus = JSON.parse(localStorage.getItem("userlogin"))
   const userlogin = useSelector(selectUserLogin);
 
