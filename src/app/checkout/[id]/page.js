@@ -12,6 +12,7 @@ import { fetchLoggedInUserAsync } from '@/features/user/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchItemsByIdAsync, selectItems } from '@/features/cart/cartSlice'
 import { createOrderAsync } from '@/features/order/orderSlice'
+import { selectcheckItems } from '@/features/cart/cartSlice'
 import Nav from '../../nav'
 import Footer from '../../../../fotter'
 
@@ -29,17 +30,15 @@ export default function Checkout(props) {
   const id = props.params.id
   const router = useRouter()
   const dispatch = useDispatch()
-  const dataa = useSelector(selectItems)
+  const dataa = useSelector(selectcheckItems)
   const buyit = useSelector(selectBuyItems)
   const quan = dataa && dataa.quantity
   const [quantityyy, setquantityyy] = useState(quan)
-  const buyitems = buyit != null ? buyit.data : JSON.parse(localStorage.getItem("buy"))
-  //const doc = dataa != null ? dataa.product : null
-  const data = dataa && dataa.product
+  let buyitems = buyit != null ?  buyit && buyit.data : JSON.parse(localStorage.getItem("buy"))
+  let data = dataa && dataa.product
   const [existingaddress, setexistingaddress] = useState(false)
   const user = JSON.parse(localStorage.getItem("loginuser"))
   const userId = user.id
-
   const totalAmountt = data != null || undefined ? quantityyy || quan ? Math.round(data.price - (data.price * data.discountPercentage / 100), 10) * (quantityyy || quan) : Math.round(data.price - (data.price * data.discountPercentage / 100), 10) * 1 : buyitems ? quantityy ? quantityy * Math.round(buyitems.price - (buyitems.price * buyitems.discountPercentage / 100), 10) : Math.round(buyitems.price - (buyitems.price * buyitems.discountPercentage / 100), 10) * 1 : null
   useEffect(() => {
     if (id, userId) {
@@ -48,6 +47,7 @@ export default function Checkout(props) {
     }
   }, [])
 
+  
   const handlePayment = (e) => {
     setPaymentMethod(e.target.value);
   };
@@ -147,6 +147,7 @@ export default function Checkout(props) {
     }
 
   };
+ 
   return (<>
 
 
@@ -271,16 +272,16 @@ export default function Checkout(props) {
         </div> : null}
 
         {/*order*/}
-
+      
         {
-          data || buyitems ?
+          data && data!==null ?
             <div className=" cartt">
               <h1 style={{ fontSize: "40px" }}>Order </h1>
               <div >
                 <div className="checkoutproductdetails">
-                  <img src={data ? data.thumbnail : buyitems.thumbnail} width={100} height={100} className="checkoutproductsimage"></img>
+                  <img src={data && data.thumbnail } width={100} height={100} className="checkoutproductsimage"></img>
                   <div className="checkoutdetails">
-                    <h5 style={{ margin: "0px 20px 0px 100px", width: "150px" }}>  {data ? data.title : buyitems.title} </h5>
+                    <h5 style={{ margin: "0px 20px 0px 100px", width: "150px" }}>  {data && data.title } </h5>
                     <select className='checkoutselect'
                       onChange={(e) => { handleQuantity(e, dataa), setquantityy(e.target.value), setquantityyy(e.target.value) }}
                       value={statuss ? itemm && itemm.quantity : dataa && dataa.quantity} >
@@ -297,7 +298,30 @@ export default function Checkout(props) {
                   </div>
                 </div>
               </div>
-            </div> : null}
+            </div> : <div className=" cartt">
+              <h1 style={{ fontSize: "40px" }}>Order </h1>
+              <div >
+                <div className="checkoutproductdetails">
+                  <img src={buyitems && buyitems.thumbnail} width={100} height={100} className="checkoutproductsimage"></img>
+                  <div className="checkoutdetails">
+                    <h5 style={{ margin: "0px 20px 0px 100px", width: "150px" }}>  {buyitems && buyitems.title} </h5>
+                    <select className='checkoutselect'
+                      onChange={(e) => { handleQuantity(e, dataa), setquantityy(e.target.value), setquantityyy(e.target.value) }}
+                      value={statuss ? itemm && itemm.quantity : dataa && dataa.quantity} >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                    <div className="checkouttotal">
+                      <h2>Subtotal</h2>
+                      <h5>&#8377; {data ? totalAmountt : totalAmountt}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>}
         <div className="screenfoo"><Footer></Footer></div>
       </div>
     </div> : redirect("/login")}
