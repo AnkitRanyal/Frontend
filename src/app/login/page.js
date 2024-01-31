@@ -50,7 +50,7 @@ export default function Login() {
           router.push("/auth")
         } else if (data.login == true && data.role == 'admin') {
           router.push("/admin")
-          setTimeout(notify,3000)
+          notify()
         }
         else {
           router.push("/login")
